@@ -11,5 +11,6 @@ namespace Timelogger
 		}
 
 		public DbSet<Project> Projects { get; set; }
+		public DbSet<TimeLog> TimeLogs { get; set; }
 	}
 }
