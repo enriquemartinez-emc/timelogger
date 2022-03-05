@@ -1,21 +1,19 @@
-import * as React from 'react';
-import Projects from './views/Projects';
-import './tailwind.generated.css';
+import React from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Projects from "./views/Projects";
+import TimeRegistrations from "./views/TimeLogs";
 
 export default function App() {
-    return (
-        <>
-            <header className="bg-gray-900 text-white flex items-center h-12 w-full">
-                <div className="container mx-auto">
-                   <a className="navbar-brand" href="/">Timelogger</a>
-                </div>
-            </header>
-            
-            <main>
-                <div className="container mx-auto">                      
-                    <Projects />
-                </div>
-            </main>
-        </>
-    );
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/*" element={<Outlet />}>
+          <Route index element={<Projects />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="projects/:projectId" element={<TimeRegistrations />} />
+        </Route>
+      </Routes>
+    </Layout>
+  );
 }
