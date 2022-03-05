@@ -7,5 +7,14 @@
   <ItemGroup>
     <ProjectReference Include="..\Timelogger\Timelogger.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Features\TimeLogs\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+  </ItemGroup>
 
 </Project>

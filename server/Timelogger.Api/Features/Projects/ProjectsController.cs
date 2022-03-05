@@ -1,29 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-namespace Timelogger.Api.Controllers
+namespace Timelogger.Api.Features.Projects
 {
-	[Route("api/[controller]")]
-	public class ProjectsController : Controller
-	{
-		private readonly ApiContext _context;
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProjectsController : ControllerBase
+    {
+        private readonly IMediator _mediator;
 
-		public ProjectsController(ApiContext context)
-		{
-			_context = context;
-		}
+        public ProjectsController(IMediator mediator) => _mediator = mediator;
 
-		[HttpGet]
-		[Route("hello-world")]
-		public string HelloWorld()
-		{
-			return "Hello Back!";
-		}
+        [HttpGet]
+        public Task<ProjectsResponse> Get(GetProjectsQuery request) => _mediator.Send(request);
 
-		// GET api/projects
-		[HttpGet]
-		public IActionResult Get()
-		{
-			return Ok(_context.Projects);
-		}
-	}
+        [HttpGet("{id}")]
+        public Task<ProjectResponse> GetById(int id) => _mediator.Send(new GetProjectQuery(id));
+
+        [HttpPut("{id}/complete")]
+        public Task Complete(int id) => _mediator.Send(new CompleteProjectCommand(id));
+    }
 }
