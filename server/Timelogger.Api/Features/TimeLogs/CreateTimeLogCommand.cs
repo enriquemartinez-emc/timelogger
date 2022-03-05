@@ -3,6 +3,7 @@ using MediatR;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Timelogger.Api.Infrastructure.Errors;
 
 namespace Timelogger.Api.Features.TimeLogs
 {
