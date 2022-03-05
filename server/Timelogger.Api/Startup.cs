@@ -53,11 +53,11 @@ namespace Timelogger.Api
 			{
 				options.EnableEndpointRouting = false;
 			})
-				.AddNewtonsoftJson()
-				.AddFluentValidation(cfg =>
-				{
-					cfg.RegisterValidatorsFromAssemblyContaining<Startup>();
-				});
+			.AddNewtonsoftJson()
+			.AddFluentValidation(cfg =>
+			{
+				cfg.RegisterValidatorsFromAssemblyContaining<Startup>();
+			});
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

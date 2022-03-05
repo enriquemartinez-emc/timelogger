@@ -37,7 +37,7 @@ export default function TimeLogsList({
               <td>{timeLog.duration}</td>
               <td>
                 <a href="#" onClick={() => handleDelete(timeLog.id)}>
-                  <i className="bi-trash"></i>
+                  <i className="bi-x-lg"></i>
                 </a>
               </td>
             </tr>

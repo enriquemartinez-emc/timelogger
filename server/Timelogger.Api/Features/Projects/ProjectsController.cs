@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Timelogger.Api.Features.Projects
 {
-    [Route("api/[controller]")]
+    [Route("api/projects")]
     [ApiController]
     public class ProjectsController : ControllerBase
     {
@@ -13,7 +13,7 @@ namespace Timelogger.Api.Features.Projects
         public ProjectsController(IMediator mediator) => _mediator = mediator;
 
         [HttpGet]
-        public Task<ProjectsResponse> Get(GetProjectsQuery request) => _mediator.Send(request);
+        public Task<ProjectsResponse> Get() => _mediator.Send(new GetProjectsQuery());
 
         [HttpGet("{id}")]
         public Task<ProjectResponse> GetById(int id) => _mediator.Send(new GetProjectQuery(id));
