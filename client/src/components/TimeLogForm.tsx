@@ -22,7 +22,6 @@ export default function TimeLogForm({ show, handleClose, addTimeLog }: Props) {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.stopPropagation();
-      e.stopPropagation();
       setValidated(true);
       return;
     }
